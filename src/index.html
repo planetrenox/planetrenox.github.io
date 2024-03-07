@@ -1,0 +1,156 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=500, initial-scale=1"/>
+
+    <title></title>
+    <meta name="description" content="">
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <meta property="og:image:alt" content="">
+
+    <link rel="icon" href="/src/img/favicon.ico" sizes="any">
+    <link rel="icon" href="/src/img/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="img/icon.png">
+    <script data-goatcounter="https://ibetyoucountsheep.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+    <meta name="theme-color" content="#fafafa">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100%;
+        }
+
+        .website {
+            width: 320px;
+            height: 180px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .website iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .website .nametag {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="website">
+        <iframe src="https://www.npmjs.com/package/zwus"></iframe>
+        <div class="nametag"><a href="https://www.npmjs.com/package/zwus" target="_blank">zwus</a></div>
+    </div>
+    <div class="website">
+        <iframe src="https://www.npmjs.com/package/cute-npm-init"></iframe>
+        <div class="nametag"><a href="https://www.npmjs.com/package/cute-npm-init" target="_blank">cute-npm-init</a></div>
+    </div>
+    <div class="website">
+        <iframe src="https://www.npmjs.com/package/cute-github-init"></iframe>
+        <div class="nametag"><a href="https://www.npmjs.com/package/cute-github-init" target="_blank">cute-github-init</a></div>
+    </div>
+    <div class="website">
+        <iframe src="https://www.npmjs.com/package/cute-socks"></iframe>
+        <div class="nametag"><a href="https://www.npmjs.com/package/cute-socks" target="_blank">cute-socks</a></div>
+    </div>
+    <div class="website">
+        <iframe src="https://www.npmjs.com/package/cute-openai"></iframe>
+        <div class="nametag"><a href="https://www.npmjs.com/package/cute-openai" target="_blank">cute-openai</a></div>
+    </div>
+    <div class="website">
+        <iframe src="https://example.com/website1"></iframe>
+        <div class="nametag">Website 7</div>
+    </div>
+    <div class="website">
+        <iframe src="https://example.com/website2"></iframe>
+        <div class="nametag">Website 8</div>
+    </div>
+    <div class="website">
+        <iframe src="https://example.com/website1"></iframe>
+        <div class="nametag">Website 9</div>
+    </div>
+    <div class="website">
+        <iframe src="https://example.com/website2"></iframe>
+        <div class="nametag">Website 10</div>
+    </div>
+    <div class="website">
+        <iframe src="https://example.com/website1"></iframe>
+        <div class="nametag">Website 11</div>
+    </div>
+    <div class="website">
+        <iframe src="https://example.com/website2"></iframe>
+        <div class="nametag">Website 12</div>
+    </div>
+    <div class="website">
+        <iframe src="https://example.com/website1"></iframe>
+        <div class="nametag">Website 13</div>
+    </div>
+    <div class="website">
+        <iframe src="https://example.com/website2"></iframe>
+        <div class="nametag">Website 14</div>
+    </div>
+    <div class="website">
+        <iframe src="https://example.com/website1"></iframe>
+        <div class="nametag">Website 15</div>
+    </div>
+    <div class="website">
+        <iframe src="https://example.com/website2"></iframe>
+        <div class="nametag">Website 16</div>
+    </div>
+</div>
+<script>
+    function resizeContainers()
+    {
+        const container = document.querySelector('.container');
+        const websites = document.querySelectorAll('.website');
+        const rowCount = Math.floor(Math.sqrt(websites.length));
+        const columnCount = Math.ceil(websites.length / rowCount);
+
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        const websiteWidth = viewportWidth / columnCount;
+        const websiteHeight = viewportHeight / rowCount;
+
+        websites.forEach((website) =>
+        {
+            website.style.width = `${websiteWidth}px`;
+            website.style.height = `${websiteHeight}px`;
+        });
+    }
+
+    window.addEventListener('resize', resizeContainers);
+    window.addEventListener('DOMContentLoaded', (event) =>
+    {
+        resizeContainers();
+    });
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Page</title>
+    <script type="module">
+        import bitmeddler from 'https://esm.sh/bit-meddler';
+        window.bitmeddler = bitmeddler;
+    </script>
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        canvas {
+            user-select: none;
+            pointer-events: none;
+            margin: 10px;
+        }
+    </style>
+    <script type="module">
+        // Function library for bit-meddler effects
+        const bitMeddlerEffects = {
+            scramblePixels: function (imageData) {
+                const pixelData = imageData.data;
+                const meddle = new window.bitmeddler(pixelData.length);
+                const scrambledIndexes = meddle.all();
+
+                const scrambledData = new Uint8ClampedArray(pixelData.length);
+                for (let i = 0; i < pixelData.length; i++) {
+                    scrambledData[i] = pixelData[scrambledIndexes[i]];
+                }
+
+                imageData.data.set(scrambledData);
+            },
+
+            glitchEffect: function (imageData) {
+                const pixelData = imageData.data;
+                const meddle = new window.bitmeddler(pixelData.length);
+
+                for (let i = 0; i < pixelData.length; i += 4) {
+                    const offset = meddle.next() * 4;
+                    const r = pixelData[offset];
+                    const g = pixelData[offset + 1];
+                    const b = pixelData[offset + 2];
+
+                    pixelData[i] = r;
+                    pixelData[i + 1] = g;
+                    pixelData[i + 2] = b;
+                }
+            },
+
+            // Add more effects as needed
+        };
+
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const img = new Image();
+            img.src = '/src/img/q.png'; // Ensure this path is correct
+            img.style.display = 'none';
+
+            img.onload = function () {
+                const effects = Object.keys(bitMeddlerEffects);
+
+                effects.forEach((effect) => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    bitMeddlerEffects[effect](imageData);
+                    ctx.putImageData(imageData, 0, 0);
+
+                    document.body.appendChild(canvas);
+                });
+            };
+
+            // Check if image is already loaded
+            if (img.complete) {
+                img.onload();
+            }
+
+            document.body.appendChild(img); // This is optional if you don't want to display the original image
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
